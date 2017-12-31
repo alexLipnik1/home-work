@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <LINK href="app.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+        var arr = [];
+
+        function click1() {
+            var json = {}
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var birth_day = document.getElementById('birth_day').value;
+            var color = document.getElementById('color').value;
+
+            if (name == '' || age == '' || birth_day == '') {
+                alert('You have to fill all the fields!')
+                return;
+            }
+
+            json["name"] = name;
+            json["age"] = age;
+            json["birth_day"] = birth_day;
+            json["color"] = color;
+            arr.push(JSON.stringify(json));
+
+            $(`<ul class="inner_ul" style="color: ${color}">
+                <li>${name}</li>
+                <li style="list-style: none">${age}</li>
+                <li style="list-style: none">${birth_day}</li>
+            </ul>`).appendTo('#list');
+        }
+    </script>
+    <div class="container">
+        <div>
+            <label>שם</label>
+            <input id="name" type="text"></input>
+        </div>
+        <div>
+            <label>גיל</label>
+            <input id="age" type="text"></input>
+        </div>
+        <div>
+            <label>תאריך לידה</label>
+            <input id="birth_day" type="text"></input>
+        </div>
+        <div>
+            <label>צבע מועדף</label>
+            <input id='color' class="color" name="colorpicker" type="color">
+        </div>
+        <div>
+            <button class="button" onclick="click1()">Save</button>
+        </div>
+    </div>
+    <div class="history">
+        <ul id='list'>
+        </ul>
+    </div>
+    <script>
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

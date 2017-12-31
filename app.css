@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    direction: rtl;
+}
+
+div {
+    display: flex;
+    padding: 10px;
+}
+
+.inner_ul {
+    padding: 10px;
+    margin: 5px;
+}
+
+input {
+    width: 200px;
+    margin: 0 20px;
+}
+
+.button {
+    width: 50px;
+}
+
+.color {
+    width: 50px;
+}
+
+.history {}
+
+li {}
