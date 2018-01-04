@@ -1,7 +1,46 @@
 <!DOCTYPE html>
+<html leng='en'>
 
-<head leng='en'>
+<head>
+    <script>
+        let student = {
+            first_name: "alex",
+            last_name: "lipnik",
+            address: "tel-aviv",
+            grades: [],
+            set Grade(grade) {
+                this.grades.push(grade);
+            },
+            get grade_average() {
+                let temp = 0;
+                let grades = this.grades;
+                for (i in grades) {
+                    temp += grades[i];
+                }
+                return temp / this.grades.length;
+            },
+            _student() {
+                return (`
+                    Full Name: ${this.first_name + " " + this.last_name}
+                    Address: ${this.address.toString()}
+                    Grades: ${this.grades.toString()}
+                    Grades Averege: ${this.grade_average}`)
+            }
+        }
 
+        student.Grade = 80;
+        student.Grade = 90;
+        student.Grade = 80;
+        student.Grade = 100;
+        console.log(student.grades);
+        console.log(student.grade_average)
+        console.log(student._student())
+        alert(student._student())
+    </script>
 </head>
 
-<body></body>
+<body>
+
+</body>
+
+</html>
