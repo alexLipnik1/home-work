@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body>
+    <input id='color' class="color" name="colorpicker" type="color" onchange="slectionCount()">
+    <script>
+        let count = 0;
+        let arr = [];
+        function slectionCount() {
+
+            arr.push(document.getElementById('color').value)
+            setTimeout(() => {
+                alert(`
+                    total times: ${arr.length}
+                    event idex: ${count}
+                    current color: ${arr[count]}
+                    event color: ${arr[arr.length -1]}
+                `)
+                count++;
+                if(arr.length === count){
+                    setTimeout(() => {
+                        count = 0;
+                        arr = []
+                    }, 0);
+                }
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

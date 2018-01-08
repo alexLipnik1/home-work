@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body>
+    <script>
+        function Shape(x,y, color){
+            console.log(x,y)
+            this.distance = function(){ 
+               return Math.sqrt((x*x)+(y*y))
+            };
+            this.toString = function(){ 
+                return  `X = ${x}, Y = ${y}, Color = ${color}`
+            }
+        }
+        let red = new Shape(1,2,'red');
+        console.log(red.toString())
+        console.log(red.distance())
+    </script>
+</body>
+</html>
