@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body>
+    <script>
+        class Computer {
+            constructor(ramMemory, hdMemory, type, price, warranty){
+                this.ramMemory = ramMemory;
+                this.hdMemory = hdMemory;
+                this.type = type;
+                this.price = price;
+                this.warranty = warranty;
+            }
+
+            set ramMemory(value) {
+                if(value >= 4 && value <= 16 )
+                    this._ramMemory = value;
+                else {
+                    console.log(`Value of ramMemory of is not good`)
+                }
+            }
+            get ramMemory() {
+                return  this._ramMemory
+            }
+
+
+            set hdMemory(value) {
+                if(value >= 200 && value <= 3000 )
+                    this._hdMemory = value;
+                else {
+                    console.log(`Value of hdMemory is not good`)
+                }
+            }
+            get hdMemory() {
+                return  this._hdMemory
+            }
+
+
+            set type(value) {
+                this._type = value;
+            }
+            get type() {
+                return  this._type
+            }
+
+
+            set price(value) {
+                if(value >= 800 && value <= 20000 )
+                    this._price = value;
+                else {
+                    console.log(`Value of price is not good`)
+                }
+            }
+            get price() {
+                return  this._price 
+            }
+
+
+            set warranty(value) {
+                if(value >= 0 && value <= 5 )
+                    this._warranty = value;
+                else {
+                    console.log(`Value of warranty is not good`)
+                }
+            }
+            get warranty() {
+                return  this._warranty
+            }
+
+
+            BuyStuffForComputer(){
+                console.log("Headphones: 400$")
+            }
+            PrintComputer(){
+                console.log(`
+                    RAM: ${this.ramMemory}
+                    HD: ${this.hdMemory}
+                    Type: ${this.type}
+                    Price: ${this.price}
+                    Warranty: ${this.warranty}
+                `)
+            }
+        }
+        class desktop extends Computer {
+            constructor(ramMemory, hdMemory, price, type, warranty, wiredComputerMouse, screenSize){
+                super(ramMemory, hdMemory, price, type, warranty)
+                this.wiredComputerMouse = wiredComputerMouse;
+                this.screenSize = screenSize;
+            }
+
+            set wiredComputerMouse(bol){
+                if(typeof bol === 'boolean'){
+                    this._wiredComputerMouse = bol;
+                }
+                else{
+                    console.log(`value of wiredComputerMouse is not valid`)
+                }
+            }
+            get wiredComputerMouse() {
+                return this._wiredComputerMouse;
+            }
+
+            set screenSize(value) {
+                if(value >= 11 && value <= 18){
+                    this._screenSize = value;
+                }
+                else{
+                    console.log(`value of screenSize in not valid`)
+                }
+            }
+            get screenSize(){
+                return this._screenSize;
+            }
+
+            BuyStuffForDesktop(){
+                console.log('Computer-table: 1000$')
+            }
+
+            PrintDesktop(){
+                console.log(`
+                    RAM: ${this.ramMemory}
+                    HD: ${this.hdMemory}
+                    Type: ${this.type}
+                    Price: ${this.price}
+                    Warranty: ${this.warranty}  
+                    Wired-computer-mouse: ${this.wiredComputerMouse}
+                    Screen-size: ${this.screenSize}
+                `)
+            }
+        }
+        class laptop extends Computer {
+            constructor(ramMemory, hdMemory, price, type, warranty, chargeTime, battary, touchScreen){
+                super(ramMemory, hdMemory, price, type, warranty)
+                this.chargeTime = chargeTime;
+                this.battary = battary;
+                this.touchScreen = touchScreen;
+            }
+
+            set touchScreen(bol){
+                if(typeof bol === 'boolean'){
+                    this._touchScreen = bol;
+                }
+                else{
+                    console.log(`value of touchScreen is not valid`)
+                }
+            }
+            get touchScreen() {
+                return this._touchScreen;
+            }
+
+            set chargeTime(value) {
+                if(value >= 1 && value <= 9){
+                    this._chargeTime = value;
+                }
+                else{
+                    console.log(`value of chargeTime is not valid`)
+                }
+            }
+            get chargeTime(){
+                return this._chargeTime;
+            }
+
+            set battary(value) {
+                if(value >= 0 && value <= 100){
+                    this._battary = value;
+                }
+                else{
+                    console.log(`value of battary is not valid`)
+                }
+            }
+            get battary(){
+                return this._battary;
+            }
+
+            BuyStuffForLaptop(){
+                console.log('Computer-case: 5000$')
+            }
+
+            FullyCarged(){
+                console.log('The computer is fully charged')
+            }
+
+            PrintLaptop(){
+                console.log(`
+                    RAM: ${this.ramMemory}
+                    HD: ${this.hdMemory}
+                    Type: ${this.type}
+                    Price: ${this.price}
+                    Warranty: ${this.warranty}  
+                    Battary: ${this.battary}
+                    Charge Time: ${this.chargeTime}
+                    Touch Screen: ${this.touchScreen}
+                `)
+            }
+        }  
+
+        let com2 = new Computer(15, 200,'g',800,  2);
+        let com3 = new desktop( 15, 200,'g',20000,0,true,15);
+        let com4 = new laptop(  15, 200,'t',20000,0,9, 100, false);
+        let computerProto = Object.getOwnPropertyNames(Computer.prototype);
+        let desktopProto = Object.getOwnPropertyNames(desktop.prototype);
+        let laptopProto = Object.getOwnPropertyNames(laptop.prototype);
+
+
+        function executeActions(c, proto){
+            for(let i in proto){ 
+            let temp = proto[i]
+            if(typeof c[temp] === 'function' && temp != 'constructor')
+                c[temp]();
+            }
+        }
+
+        let test = () => {
+            let arr = [];
+            for (let i=0; i<10; i++){
+                let proto;
+                if(i%2 === 0 && i != 0){
+                    arr.push(com4);
+                    proto = laptopProto;
+                    
+                }
+                else{
+                    arr.push(com3);
+                    proto = desktopProto;
+                }
+                executeActions(arr[i], proto)
+            }
+            console.log(arr)
+        }
+        test();
+
+        
+    </script>
+</body>
+</html>

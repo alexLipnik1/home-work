@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body>
+    <script>
+        function Shape(x,y, color){
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.distance = function(){ 
+               return Math.sqrt((x*x)+(y*y))
+            };
+            this.toString = function(){ 
+                return  `X = ${x}, Y = ${y}, Color = ${color}`
+            }
+        }
+
+        Shape.prototype.Circle = function(radius){
+            pi = 3.14;
+            this.getPi = function() {
+                return pi;
+            }
+            this.getArea = function(){
+                return (pi*(radius*radius));
+            }
+            this.getPerimeter = function(){
+                return (2*pi*radius);
+            }
+            this.toString = function(){
+                return `X = ${this.x}, Y = ${this.y}, Color = ${this.color}, Radius=${radius}`;
+            }
+        }
+
+        let red = new Shape(1,2,'red');
+        red.Circle(5);
+        console.log("red.toString()", red.toString())
+        console.log("red.distance()",red.distance())
+        console.log("red.getArea()",red.getArea())
+        console.log("red.getPerimeter()",red.getPerimeter())
+        console.log("red.getPi()",red.getPi())
+    </script>
+</body>
+</html>
