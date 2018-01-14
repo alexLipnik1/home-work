@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+    <script>
+        let a = new Date()
+
+        function secondeCheker(x){
+            return new Promise(function(resolve, reject){
+                setTimeout(() => {
+                    if(x % 2 == 0 ){
+                        resolve('seccess')
+                    }
+                    else{
+                        reject('try again')
+                    }
+                }, 0);
+            })
+        }
+
+
+        let resolveAction = (msg) => { console.log("resolve msg", msg); };
+        let rejectAction = (msg) => { 
+                console.log("reject msg", msg);
+                let b = new Date();
+                secondeCheker(b).then(resolveAction).catch(rejectAction);
+            };
+
+
+
+        secondeCheker(a).then(resolveAction).catch(rejectAction);
+
+    </script>
+</body>
+</html>
