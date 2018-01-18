@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+        function getNum() {
+            let num = document.getElementById('numberPicker').value;
+            if(num>250 || num<1 || num== undefined){
+                throw Error('the input is not valid!')
+            }
+            else
+                getCountries(num)
+        }
+        async function getCountries(num){
+            const url = 'https://restcountries.eu/rest/v2/'
+            let urlExtention = 'all?fields=name'
+            let response = await fetch(`${url}${urlExtention}`)
+            let data = await response.json();
+            urlExtention = `name/${data[num].name}?fullText=true`
+            response = await fetch(`${url}${urlExtention}`)
+            data = await response.json()
+
+            console.log(`
+                name : ${data[0].name}
+                nativeName : ${data[0].nativeName}
+                capital : ${data[0].capital}
+                population : ${data[0].population}
+                flag : ${data[0].flag}
+            `)
+
+            $(`<ul style="margin:20px 0 ">
+                <li style="list-style: none">name : ${data[0].name}</li>
+                <li style="list-style: none">nativeName : ${data[0].nativeName}</li>
+                <li style="list-style: none">capital : ${data[0].capital}</li>
+                <li style="list-style: none">population : ${data[0].population}</li>
+                <li style="list-style: none">flag : ${data[0].flag}</li>
+            </ul>`).appendTo('#list');
+        }
+    </script>
+</head>
+<body>
+    <input style="width:200px" id="numberPicker" type="text" placeholder="number between 1-250"></input>
+    <button onclick="getNum()">Submit</button>
+    <ul id="list"></ul>
+</body>
+</html>
