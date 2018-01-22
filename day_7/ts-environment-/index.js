@@ -11,8 +11,8 @@ function exeOperation(func) {
         sum += func(rest[i]);
     return sum;
 }
-var function1 = function (a) { return Math.pow(a, 2); };
-var test_1 = [8.5, 7.9, 3.1];
-var test_2 = [4, 7, 8];
-console.log(exeOperation.apply(void 0, [undefined].concat(test_1)));
-console.log(exeOperation.apply(void 0, [function1].concat(test_2)));
+var pow = function (a) { return Math.pow(a, 2); };
+var defualt_test = [8.5, 7.9, 3.1];
+var pow_test = [4, 7, 8];
+console.log(exeOperation.apply(void 0, [undefined].concat(defualt_test)));
+console.log(exeOperation.apply(void 0, [pow].concat(pow_test)));
