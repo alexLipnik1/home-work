@@ -22,7 +22,7 @@ body ul {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  width: 765px;
+  width: 760px;
   flex-wrap: wrap;
   overflow: hidden;
   counter-reset: li_cnt;
