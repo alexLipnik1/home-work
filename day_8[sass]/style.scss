@@ -1,0 +1,78 @@
+html{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: white;
+}
+
+$colors-list1: black #c7a7d1;
+$colors-list2: #c7a7d1  black;
+
+body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+
+    ul{
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        width: 768px;
+        flex-wrap: wrap;
+        overflow: hidden;
+        counter-reset: li_cnt;
+
+        li:before{
+            counter-increment: li_cnt;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @each $currentLi in li {
+                // content: $count;
+                counter-increment: li_cnt;
+                content: counter(li_cnt) ;
+            }
+            // content: '2';
+            font-size: 50px;
+        }
+
+        li{
+            &:nth-child(1){
+                border-radius: 25% 0 0 0;
+            }
+            &:nth-child(3){
+                border-radius: 0 25% 0 0;
+            }
+            &:nth-child(7){
+                border-radius: 0 0  0 25%;
+            }
+            &:nth-child(9){
+                border-radius: 0 0 25% 0;
+            }
+            height: 250px;
+            width: 250px;
+            margin: 3px;
+            @each $current-color in $colors-list1 {
+                $i: index($colors-list1, $current-color);
+                &:nth-child(#{length($colors-list1)}n + #{$i}) {
+                    background: $current-color;
+                }
+            }
+            @each $current-color in $colors-list2  {
+                $i: index($colors-list2, $current-color);
+                &:nth-child(#{length($colors-list2)}n + #{$i}) {
+                    color: $current-color;
+                }
+
+            }
+        }
+    }
+}
+
