@@ -17,17 +17,18 @@ body {
 body ul {
   padding: 0;
   margin: 0;
+  border-radius: 8.33333%;
   list-style-type: none;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  width: 768px;
+  width: 765px;
   flex-wrap: wrap;
   overflow: hidden;
   counter-reset: li_cnt;
 }
 
-body ul li:before {
+body ul li::before {
   counter-increment: li_cnt;
   height: 100%;
   display: flex;
@@ -35,29 +36,20 @@ body ul li:before {
   align-items: center;
   counter-increment: li_cnt;
   content: counter(li_cnt);
-  font-size: 50px;
+  font-size: 70px;
 }
 
 body ul li {
   height: 250px;
   width: 250px;
-  margin: 3px;
 }
 
-body ul li:nth-child(1) {
-  border-radius: 25% 0 0 0;
+body ul li:not(:nth-child(3n + 1)) {
+  margin-left: 5px;
 }
 
-body ul li:nth-child(3) {
-  border-radius: 0 25% 0 0;
-}
-
-body ul li:nth-child(7) {
-  border-radius: 0 0  0 25%;
-}
-
-body ul li:nth-child(9) {
-  border-radius: 0 0 25% 0;
+body ul li:nth-child(1n + 4) {
+  margin-top: 5px;
 }
 
 body ul li:nth-child(2n + 1) {

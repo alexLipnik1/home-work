@@ -19,46 +19,50 @@ body{
     ul{
         padding: 0;
         margin: 0;
+        border-radius: (100%/3/4);
         list-style-type: none;
         display: flex;
         justify-content: center;
         flex-direction: row;
-        width: 768px;
+        width: 765px;
         flex-wrap: wrap;
         overflow: hidden;
         counter-reset: li_cnt;
 
-        li:before{
+        li::before{
             counter-increment: li_cnt;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             @each $currentLi in li {
-                // content: $count;
                 counter-increment: li_cnt;
                 content: counter(li_cnt) ;
             }
-            // content: '2';
-            font-size: 50px;
+            font-size: 70px;
         }
 
         li{
-            &:nth-child(1){
-                border-radius: 25% 0 0 0;
-            }
-            &:nth-child(3){
-                border-radius: 0 25% 0 0;
-            }
-            &:nth-child(7){
-                border-radius: 0 0  0 25%;
-            }
-            &:nth-child(9){
-                border-radius: 0 0 25% 0;
-            }
+            // &:nth-child(1){
+            //     border-radius: 25% 0 0 0;
+            // }
+            // &:nth-child(3){
+            //     border-radius: 0 25% 0 0;
+            // }
+            // &:nth-child(7){
+            //     border-radius: 0 0  0 25%;
+            // }
+            // &:nth-child(9){
+            //     border-radius: 0 0 25% 0;
+            // }
             height: 250px;
             width: 250px;
-            margin: 3px;
+            &:not(:nth-child(3n + 1)) {
+                margin-left: 5px;
+            }
+            &:nth-child(1n + 4) {
+                margin-top: 5px;
+            }
             @each $current-color in $colors-list1 {
                 $i: index($colors-list1, $current-color);
                 &:nth-child(#{length($colors-list1)}n + #{$i}) {
