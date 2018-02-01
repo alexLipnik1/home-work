@@ -1,0 +1,18 @@
+
+.container{
+    display: flex;
+    justify-content: center
+    
+}
+td:nth-child(4){
+    background: #d5f7d5;
+}
+td{
+    background: #ffe0e0;
+}
+
+th {
+    padding: 20px;
+    font-size: 20px;
+    background: #c9c9f0;
+}

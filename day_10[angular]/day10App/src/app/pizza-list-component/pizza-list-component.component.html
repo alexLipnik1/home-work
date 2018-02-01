@@ -1,0 +1,19 @@
+
+<div class='container'>
+  <table>
+    <tbody>
+      <tr>
+        <th>Daimeter</th>
+        <th>Slices</th>
+        <th>Toppings</th>
+        <th>Price</th>
+      </tr>
+      <tr *ngFor="let pizza of Pizzas">
+        <td style="height: 35px; width: 100px">{{pizza.Diameter}}</td>
+        <td style="height: 35px; width: 100px">{{pizza.Slices}}</td>
+        <td style="height: 35px; width: 100px">{{pizza.Toppings}}</td>
+        <td style="height: 35px; width: 100px">{{pizza.Price}} $</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
