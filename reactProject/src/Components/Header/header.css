@@ -1,0 +1,35 @@
+
+._header{
+    background: #eee;
+    box-shadow: 0.5px 1px 0px 0px rgb(206, 193, 193); 
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.btn:hover{
+    background:#aaaad2;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+
+}
+.btn{
+    box-shadow: 0.5px 1.5px 0 0 #b7b7b7;
+    text-decoration: none !important;
+    border-radius: 5px;
+    background: #d4d5ec;
+    color: black !important;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    width: 100px;
+    height: 50px;
+
+    
+}
